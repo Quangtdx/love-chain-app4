@@ -12,66 +12,73 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background-color: #fce4ec; /* Hồng nhạt nhẹ nhàng */
+            background: linear-gradient(135deg, #fce4ec 0%, #ffcdd2 100%); /* Hồng nhạt đến hồng đào */
             margin: 0;
             flex-direction: column;
-            overflow: hidden; /* Ngăn cuộn không mong muốn */
-            color: #424242; /* Màu chữ tổng thể */
+            overflow: hidden;
+            color: #424242;
         }
         .container {
             background-color: white;
-            padding: 30px; /* Giảm padding */
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
             text-align: center;
             width: 90%;
-            max-width: 350px; /* Giảm max-width cho form đăng nhập */
-            transition: all 0.6s ease-in-out;
+            max-width: 400px;
+            transition: all 0.7s ease-in-out;
             box-sizing: border-box;
+            position: relative;
         }
         .container.hidden {
             opacity: 0;
-            transform: scale(0.9);
+            transform: translateY(-30px) scale(0.95);
             pointer-events: none;
             position: absolute;
         }
         h1 {
-            color: #e91e63;
-            margin-bottom: 25px; /* Giảm margin */
-            font-size: 1.8em; /* Giảm font-size */
-            letter-spacing: 0.5px;
+            color: #c2185b;
+            margin-bottom: 20px;
+            margin-top: 30px;
+            font-size: 2.8em;
+            letter-spacing: 1.5px;
+            font-family: 'Dancing Script', cursive;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
         }
         .account-selection {
             display: flex;
             flex-direction: column;
-            gap: 15px; /* Khoảng cách giữa các nút */
-            margin-top: 20px;
+            gap: 20px;
+            margin-top: 30px;
         }
         .account-button {
-            background-color: #ff80ab; /* Màu hồng nhạt hơn cho nút chọn tài khoản */
+            background-color: #ff6f91;
             color: white;
-            padding: 15px 25px;
+            padding: 18px 30px;
             border: none;
-            border-radius: 10px;
-            font-size: 1.1em;
+            border-radius: 12px;
+            font-size: 1.2em;
             font-weight: bold;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-            box-shadow: 0 3px 8px rgba(255, 128, 171, 0.3);
+            box-shadow: 0 5px 15px rgba(255, 111, 145, 0.4);
+            letter-spacing: 0.5px;
         }
         .account-button:hover {
-            background-color: #e91e63; /* Màu hồng đậm hơn khi hover */
-            transform: translateY(-2px);
-            box-shadow: 0 5px 12px rgba(233, 30, 99, 0.4);
+            background-color: #e63968;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(230, 57, 104, 0.5);
         }
         .account-button:active {
-            transform: scale(0.95);
+            transform: scale(0.97);
+            box-shadow: 0 2px 8px rgba(230, 57, 104, 0.3);
         }
         .message {
-            margin-top: 20px; /* Giảm margin */
+            margin-top: 25px;
             font-weight: bold;
-            font-size: 1em; /* Giảm font-size */
+            font-size: 1.1em;
             display: none;
+            animation: fadeIn 0.5s ease-out;
         }
         .message.success {
             color: #4caf50;
@@ -79,16 +86,20 @@
         .message.error {
             color: #f44336;
         }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
         /* Giao diện sau khi đăng nhập (Dashboard) */
         .dashboard-container {
             background-color: white;
-            padding: 30px; /* Giảm padding */
+            padding: 30px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             text-align: center;
             width: 90%;
-            max-width: 450px; /* Giảm max-width cho dashboard */
+            max-width: 450px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -96,19 +107,19 @@
             transform: scale(0.9);
             transition: all 0.6s ease-in-out;
             box-sizing: border-box;
-            position: relative; /* Để nút đăng xuất có thể dùng absolute */
+            position: relative;
         }
         .heart-area {
             position: relative;
             display: inline-block;
             cursor: pointer;
-            margin-bottom: 25px; /* Giảm margin */
+            margin-bottom: 25px;
         }
         .heart {
-            font-size: 100px; /* Giảm font-size của trái tim */
+            font-size: 100px;
             color: #e91e63;
             animation: pulse 1.8s infinite alternate ease-in-out;
-            text-shadow: 0 0 12px rgba(233, 30, 99, 0.4); /* Điều chỉnh đổ bóng */
+            text-shadow: 0 0 12px rgba(233, 30, 99, 0.4);
             transition: transform 0.1s ease-out;
         }
         .heart:active {
@@ -118,7 +129,7 @@
         /* Hiệu ứng trái tim bay lên */
         .floating-heart {
             position: absolute;
-            font-size: 18px; /* Giảm font-size trái tim bay lên */
+            font-size: 18px;
             color: #ff4081;
             opacity: 0;
             animation: floatUp 2s forwards ease-out;
@@ -141,85 +152,87 @@
             100% { transform: scale(1); }
         }
         .chain-info {
-            font-size: 2em; /* Giảm font-size */
+            font-size: 2em;
             font-weight: bold;
             color: #d81b60;
-            margin-bottom: 20px; /* Giảm margin */
+            margin-bottom: 20px;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
         }
         .chain-info span {
-            font-size: 1.1em; /* Giảm font-size */
+            font-size: 1.1em;
             color: #e91e63;
         }
         .dashboard-text {
-            font-size: 1em; /* Giảm font-size */
+            font-size: 1em;
             color: #616161;
-            margin-bottom: 25px; /* Giảm margin */
+            margin-bottom: 25px;
         }
 
-        /* Phần hiển thị ảnh đại diện và tên người dùng */
+        /* Phần hiển thị tên người dùng (đã bỏ ảnh) */
         .users-display {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 20px; /* Khoảng cách giữa các khối người dùng */
+            gap: 20px;
             margin-bottom: 20px;
-            flex-wrap: wrap; /* Cho phép xuống dòng trên màn hình nhỏ */
+            flex-wrap: wrap;
+            /* Đẩy khối tên xuống dưới nút Đăng xuất */
+            margin-top: 60px; /* Điều chỉnh giá trị này nếu cần */
         }
         .user-profile {
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            width: 120px; /* Kích thước cố định cho mỗi profile */
-        }
-        .user-profile img {
-            width: 80px; /* Kích thước ảnh đại diện */
-            height: 80px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #ff80ab; /* Viền hồng */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 8px;
+            width: 120px; /* Giới hạn chiều rộng cho mỗi profile để tránh tràn */
+            /* Vẫn giữ z-index để tên hiển thị trên các yếu tố khác nếu có chồng chéo nhỏ */
+            position: relative; 
+            z-index: 1; 
         }
         .user-profile .username {
             font-weight: bold;
             color: #e91e63;
-            font-size: 1.1em;
+            font-size: 1.5em;
+            font-family: 'Dancing Script', cursive;
+            text-shadow: 1px 1px 3px rgba(255, 128, 171, 0.5);
             white-space: nowrap; /* Ngăn tên xuống dòng */
-            overflow: hidden; /* Ẩn phần bị tràn */
-            text-overflow: ellipsis; /* Hiển thị dấu ... nếu tên quá dài */
-            max-width: 100%; /* Giới hạn chiều rộng của tên */
+            overflow: hidden; /* Ẩn phần tên tràn */
+            text-overflow: ellipsis; /* Hiển thị "..." nếu tên bị tràn */
+            max-width: 100%; /* Đảm bảo tên không vượt quá chiều rộng của user-profile */
+            transition: color 0.3s ease;
+        }
+        .user-profile .username:hover {
+            color: #d81b60;
         }
         .love-icon {
-            font-size: 2.5em; /* Kích thước icon trái tim giữa 2 người */
+            font-size: 2.5em;
             color: #ff4081;
             margin: 0 10px;
-            animation: pulse 1.5s infinite alternate ease-in-out; /* Hiệu ứng nhịp đập */
+            animation: pulse 1.5s infinite alternate ease-in-out;
         }
 
         /* Nút thông báo "Nhớ bạn" */
         .remember-button {
-            position: absolute; /* Vị trí tuyệt đối */
-            bottom: 20px; /* Cách đáy 20px */
-            right: 20px; /* Cách phải 20px */
-            background-color: #ff5722; /* Màu cam */
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ff5722;
             color: white;
             border: none;
-            border-radius: 50%; /* Hình tròn */
-            width: 60px; /* Kích thước nút */
+            border-radius: 50%;
+            width: 60px;
             height: 60px;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 2.2em; /* Kích thước icon */
+            font-size: 2.2em;
             cursor: pointer;
             box-shadow: 0 4px 10px rgba(255, 87, 34, 0.4);
             transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-            z-index: 999; /* Đảm bảo nổi trên các phần tử khác */
+            z-index: 999;
         }
         .remember-button:hover {
-            background-color: #e64a19; /* Màu cam đậm hơn khi hover */
+            background-color: #e64a19;
             transform: translateY(-3px) scale(1.05);
             box-shadow: 0 6px 15px rgba(255, 87, 34, 0.5);
         }
@@ -232,7 +245,7 @@
             position: absolute;
             top: 20px;
             right: 20px;
-            background-color: #9e9e9e; /* Màu xám */
+            background-color: #9e9e9e;
             color: white;
             padding: 8px 15px;
             border: none;
@@ -241,54 +254,340 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 10; /* Đảm bảo nút này hiển thị trên cùng */
         }
         .logout-button:hover {
-            background-color: #757575; /* Xám đậm hơn */
+            background-color: #757575;
         }
 
         /* Nút Debug/Test */
         .debug-button {
-            position: fixed; /* Vị trí cố định trên màn hình */
+            position: fixed;
             bottom: 20px;
             left: 20px;
-            background-color: #2196F3; /* Màu xanh dương */
+            background-color: #2196F3;
             color: white;
             border: none;
-            border-radius: 50%; /* Hình tròn */
-            width: 50px; /* Kích thước nhỏ hơn */
+            border-radius: 50%;
+            width: 50px;
             height: 50px;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 1.8em; /* Kích thước icon */
+            font-size: 1.8em;
             cursor: pointer;
             box-shadow: 0 4px 10px rgba(33, 150, 243, 0.4);
             transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-            z-index: 1000; /* Đảm bảo luôn nằm trên cùng */
-            font-family: monospace; /* Font đơn cách điệu */
+            z-index: 1000;
+            font-family: monospace;
         }
         .debug-button.active {
-            background-color: #FFC107; /* Màu vàng khi active (chế độ test bật) */
+            background-color: #FFC107;
             color: #333;
         }
         .debug-button:hover {
-            background-color: #1976D2; /* Xanh đậm hơn khi hover */
+            background-color: #1976D2;
             transform: translateY(-2px) scale(1.05);
             box-shadow: 0 6px 15px rgba(33, 150, 243, 0.5);
         }
         .debug-button.active:hover {
-            background-color: #FFA000; /* Vàng đậm hơn khi active hover */
+            background-color: #FFA000;
         }
         .debug-button:active {
             transform: scale(0.9);
         }
         .debug-button-text {
-            font-size: 0.7em; /* Text nhỏ hơn trong nút */
+            font-size: 0.7em;
             position: absolute;
             bottom: 5px;
-            pointer-events: none; /* Không ảnh hưởng đến click */
+            pointer-events: none;
+        }
+
+        /* Nút Admin nhỏ */
+        .admin-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #673AB7;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 0 3px 8px rgba(103, 58, 183, 0.4);
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            z-index: 1000;
+        }
+        .admin-button:hover {
+            background-color: #512DA8;
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 4px 10px rgba(103, 58, 183, 0.5);
+        }
+        .admin-button:active {
+            transform: scale(0.9);
+        }
+        
+        /* Modal (Hộp thoại chung) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            animation: slideIn 0.3s ease-out;
+            position: relative;
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .modal-content h2 {
+            color: #673AB7;
+            margin-bottom: 20px;
+            font-size: 1.6em;
+        }
+        .modal-content input[type="password"],
+        .modal-content input[type="number"],
+        .modal-content input[type="text"], /* Thêm cho đổi tên */
+        .modal-content select, /* Thêm cho chọn giới tính */
+        .modal-content input[type="color"] { /* Thêm cho input color */
+            width: calc(100% - 20px);
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1.1em;
+            box-sizing: border-box;
+            -webkit-appearance: none; /* Loại bỏ style mặc định của trình duyệt cho input color */
+            -moz-appearance: none;
+            appearance: none;
+            cursor: pointer;
+            height: 48px; /* Đảm bảo chiều cao tương tự các input khác */
+        }
+        .modal-content input[type="color"]::-webkit-color-swatch-wrapper {
+            padding: 0;
+        }
+        .modal-content input[type="color"]::-webkit-color-swatch {
+            border: none;
+            border-radius: 6px;
+        }
+        .modal-content button {
+            background-color: #673AB7;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin: 5px;
+        }
+        .modal-content button:hover {
+            background-color: #512DA8;
+            transform: translateY(-1px);
+        }
+        .modal-content .close-button {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .modal-content .close-button:hover,
+        .modal-content .close-button:focus {
+            color: #333;
+            text-decoration: none;
+        }
+        .modal-message {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #f44336;
+            display: none;
+        }
+        .modal-message.success {
+            color: #4caf50;
+        }
+
+        /* Dành cho chế độ Admin (hiển thị khi admin đăng nhập) */
+        .admin-controls {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            text-align: left;
+        }
+        .admin-controls h2 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #424242; /* Thay đổi màu sắc để dễ nhìn hơn */
+            font-size: 1.4em; /* Kích thước nhỏ hơn một chút */
+            border-bottom: 1px solid #eee;
+            padding-bottom: 8px;
+        }
+        .admin-controls label {
+            font-weight: bold;
+            color: #673AB7;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+            display: block; /* Đảm bảo label đứng trên input */
+        }
+        .admin-controls .input-group { /* Nhóm input và label */
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .admin-controls select,
+        .admin-controls input[type="text"],
+        .admin-controls input[type="number"] {
+            width: calc(100% - 20px); /* Adjust width for padding */
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: 1em;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+        .admin-controls .action-buttons {
+            display: flex;
+            justify-content: space-around;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+        .admin-controls .action-buttons button {
+            flex-grow: 1;
+            min-width: 120px;
+        }
+
+        /* Styles cho dòng chữ "Kết nối tình yêu" */
+        .love-connection-text {
+            margin-top: 25px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5em;
+            color: #d81b60;
+            text-shadow: 3px 3px 8px rgba(255, 128, 171, 0.6);
+            letter-spacing: 2px;
+            animation: fadeInScale 2s ease-out forwards;
+            /* **QUAN TRỌNG**: Chỉ hiển thị ở màn hình đăng nhập */
+            display: block; /* Mặc định là block để hiển thị ở login */
+        }
+
+        /* Ẩn dòng chữ "Kết nối tình yêu" khi dashboard hiển thị */
+        body.dashboard-active .love-connection-text {
+            display: none;
+        }
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* --- Styles cho Love Notification Modal (Bảng tình yêu - thông báo Nhớ bạn) --- */
+        #loveNotificationModal .modal-content {
+            background: linear-gradient(160deg, #ffe0b2 0%, #ffcc80 100%); /* Nền cam đào nhẹ */
+            padding: 35px;
+            border-radius: 20px;
+            border: 3px solid #ff9800; /* Viền cam nổi bật */
+            box-shadow: 0 10px 30px rgba(255, 152, 0, 0.4); /* Đổ bóng cam */
+            max-width: 380px;
+            animation: bounceIn 0.6s ease-out; /* Hiệu ứng nảy vào */
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); }
+        }
+
+        #loveNotificationModal h2 {
+            font-family: 'Dancing Script', cursive;
+            color: #e65100; /* Cam đậm */
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+
+        #loveNotificationModal .love-message-content {
+            font-size: 1.3em;
+            color: #795548; /* Nâu đất nhẹ nhàng */
+            line-height: 1.6;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        #loveNotificationModal .love-icon-big {
+            font-size: 3em;
+            color: #f44336; /* Đỏ tươi */
+            animation: heartBeat 1.5s infinite alternate; /* Hiệu ứng đập tim */
+            margin-bottom: 20px;
+        }
+
+        @keyframes heartBeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        #loveNotificationModal button {
+            background-color: #ff9800; /* Cam sáng */
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 10px rgba(255, 152, 0, 0.3);
+        }
+
+        #loveNotificationModal button:hover {
+            background-color: #f57c00; /* Cam đậm hơn */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(245, 124, 0, 0.4);
+        }
+
+        #loveNotificationModal .close-button {
+            color: #d32f2f; /* Đỏ đậm cho nút đóng */
+            font-size: 30px;
+            top: 10px;
+            right: 15px;
+        }
+        #loveNotificationModal .close-button:hover {
+            color: #b71c1c;
         }
     </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="login-container" class="container">
@@ -300,16 +599,19 @@
         <p id="login-message" class="message"></p>
     </div>
 
+    <div class="love-connection-text">
+        Kết Nối Tình Yêu 💖
+    </div>
+
     <div id="dashboard-container" class="dashboard-container">
         <button class="logout-button" onclick="logoutUser()">Đăng xuất</button>
 
         <div class="users-display">
             <div class="user-profile">
-                <img id="current-user-avatar" src="" alt="Ảnh đại diện của bạn">
                 <div id="current-user-name" class="username"></div>
             </div>
-            <span class="love-icon">💕</span> <div class="user-profile">
-                <img id="connected-user-avatar" src="" alt="Ảnh đại diện của người ấy">
+            <span class="love-icon">💕</span> 
+            <div class="user-profile">
                 <div id="connected-user-name" class="username"></div>
             </div>
         </div>
@@ -332,6 +634,100 @@
         <span class="debug-button-text">Test</span>
     </button>
 
+    <button class="admin-button" onclick="openAdminModal()">
+        ⚙️
+    </button>
+
+    <div id="adminModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeAdminModal()">&times;</span>
+            <h2 id="admin-modal-title">Admin Access</h2>
+            <div id="admin-password-section">
+                <p>Nhập mật khẩu Admin:</p>
+                <input type="password" id="adminPasswordInput" placeholder="Mật khẩu">
+                <button onclick="checkAdminPassword()">Xác nhận</button>
+                <p id="adminPasswordMessage" class="modal-message"></p>
+            </div>
+
+            <div id="admin-controls-section" class="admin-controls" style="display: none;">
+                <h2>Quản lý Tài khoản</h2>
+                <div class="input-group">
+                    <label for="selectUserToEdit">Chọn người dùng:</label>
+                    <select id="selectUserToEdit" onchange="displaySelectedUserInfo()"></select>
+                </div>
+                
+                <div class="input-group">
+                    <label for="editUserName">Sửa tên tài khoản:</label>
+                    <input type="text" id="editUserName" placeholder="Tên mới">
+                    <button onclick="editUserName()">Lưu tên</button>
+                </div>
+
+                <div class="input-group">
+                    <label for="editUserGender">Sửa giới tính:</label>
+                    <select id="editUserGender">
+                        <option value="male">Nam</option>
+                        <option value="female">Nữ</option>
+                        <option value="other">Khác</option>
+                    </select>
+                    <button onclick="editUserGender()">Lưu giới tính</button>
+                </div>
+
+                <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+
+                <h2>Sửa đổi Chuỗi Yêu Thương</h2>
+                <div class="input-group">
+                    <label for="newLoveChainValue">Giá trị chuỗi mới:</label>
+                    <input type="number" id="newLoveChainValue" min="1">
+                </div>
+                <div class="action-buttons">
+                    <button onclick="setLoveChain()">Đặt chuỗi</button>
+                    <button onclick="increaseLoveChain()">Tăng chuỗi (+1)</button>
+                    <button onclick="decreaseLoveChain()">Giảm chuỗi (-1)</button>
+                    <button onclick="resetLoveChainForUser()">Reset về 1</button>
+                </div>
+                <p id="adminActionMessage" class="modal-message"></p>
+
+                <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+
+                <h2>Chỉnh Sửa Giao Diện</h2>
+                <div class="input-group">
+                    <label for="backgroundColorPicker">Màu nền chính (Gradient 1):</label>
+                    <input type="color" id="backgroundColorPicker" value="#fce4ec">
+                    <label for="backgroundColorPicker2">Màu nền phụ (Gradient 2):</label>
+                    <input type="color" id="backgroundColorPicker2" value="#ffcdd2">
+                    <button onclick="applyBackgroundColors()">Áp dụng màu nền</button>
+                </div>
+                <p id="themeMessage" class="modal-message"></p>
+                </div>
+        </div>
+    </div>
+
+    <div id="loveNotificationModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeLoveNotificationModal()">&times;</span>
+            <h2>Lời Nhắn Yêu Thương!</h2>
+            <div class="love-icon-big">💌</div>
+            <p id="loveNotificationMessage" class="love-message-content"></p>
+            <button onclick="closeLoveNotificationModal()">Tuyệt vời!</button>
+        </div>
+    </div>
+
+    <div id="heartfeltNotification" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeHeartfeltNotification()">&times;</span>
+            <div class="love-icon-big">💖</div>
+            <h2>Lời Nhắn Ngọt Ngào!</h2>
+            <p class="love-message-content">
+                Cảm ơn bạn đã trao trái tim!
+                <br>
+                Ghé thăm ngôi nhà nhỏ của chúng mình tại <a href="LINK_TO_OTHER_ACCOUNT_HERE" target="_blank" class="account-link">@TênAccKia</a> nhé?
+                <br>
+                Nơi đó có nhiều điều thú vị đang chờ đón bạn! 😊
+            </p>
+            <button onclick="closeHeartfeltNotification()">Đã hiểu!</button>
+        </div>
+    </div>
+
 
     <script>
         // --- JAVASCRIPT LOGIC ---
@@ -342,37 +738,77 @@
         const heartClickArea = document.getElementById('heart-click-area');
         const debugToggleButton = document.getElementById('debug-toggle-button');
 
-        // Thêm các element mới cho avatar và tên
-        const currentUserAvatar = document.getElementById('current-user-avatar');
+        // Các element cho tên người dùng
         const currentUserName = document.getElementById('current-user-name');
-        const connectedUserAvatar = document.getElementById('connected-user-avatar');
         const connectedUserName = document.getElementById('connected-user-name');
+
+        // Các element cho Admin Modal
+        const adminModal = document.getElementById('adminModal');
+        const adminPasswordInput = document.getElementById('adminPasswordInput');
+        const adminPasswordMessage = document.getElementById('adminPasswordMessage');
+        const adminPasswordSection = document.getElementById('admin-password-section');
+        const adminControlsSection = document.getElementById('admin-controls-section');
+        const selectUserToEdit = document.getElementById('selectUserToEdit');
+        const newLoveChainValueInput = document.getElementById('newLoveChainValue');
+        const editUserNameInput = document.getElementById('editUserName'); // Thêm cho đổi tên
+        const editUserGenderSelect = document.getElementById('editUserGender'); // Thêm cho đổi giới tính
+        const adminActionMessage = document.getElementById('adminActionMessage');
+
+        // Các element cho Love Notification Modal mới (lời nhắn yêu thương)
+        const loveNotificationModal = document.getElementById('loveNotificationModal');
+        const loveNotificationMessage = document.getElementById('loveNotificationMessage');
+
+        // Các element cho heartfeltNotification (nhớ bạn)
+        const heartfeltNotification = document.getElementById('heartfeltNotification');
+
+
+        // Các element cho chỉnh sửa giao diện
+        const backgroundColorPicker = document.getElementById('backgroundColorPicker');
+        const backgroundColorPicker2 = document.getElementById('backgroundColorPicker2');
+        const themeMessage = document.getElementById('themeMessage');
+
+
+        // Mật khẩu Admin (có thể thay đổi)
+        const ADMIN_PASSWORD = 'admin'; // Bạn có thể thay đổi mật khẩu này
 
         // Bật/tắt chế độ debug (test)
         let isDebugMode = localStorage.getItem('isDebugMode') === 'true'; // Lưu trạng thái debug
+        let isAdminLoggedIn = false; // Trạng thái đăng nhập Admin
 
         // Hàm lấy dữ liệu người dùng từ localStorage hoặc khởi tạo mặc định
         function loadUsersData() {
             const storedData = localStorage.getItem('loveChainUsers');
             if (storedData) {
-                return JSON.parse(storedData);
+                const parsedData = JSON.parse(storedData);
+                // Đảm bảo tất cả người dùng đều có trường 'gender' và 'username' (tên ban đầu)
+                for (const userKey in parsedData) {
+                    if (!parsedData[userKey].gender) {
+                        parsedData[userKey].gender = 'other'; // Mặc định là 'other' nếu chưa có
+                    }
+                    if (!parsedData[userKey].username) {
+                        // Nếu chưa có username, đặt mặc định là key
+                        parsedData[userKey].username = userKey;
+                    }
+                }
+                return parsedData;
             }
             // Dữ liệu mặc định nếu chưa có trong localStorage
-            // Khởi tạo loveChain là 1 theo yêu cầu mới
             return {
                 'Nhat Quang': {
-                    loveChain: 1, // Khởi tạo chuỗi là 1
+                    loveChain: 1,
                     lastClickedDate: '',
                     connectedUser: 'Linh Nhu',
                     hasClickedToday: false,
-                    avatar: 'image_14445a.jpg' // Đường dẫn ảnh đại diện của Nhật Quang
+                    gender: 'male',
+                    username: 'Nhật Quang' // Tên gốc của tài khoản
                 },
                 'Linh Nhu': {
-                    loveChain: 1, // Khởi tạo chuỗi là 1
+                    loveChain: 1,
                     lastClickedDate: '',
                     connectedUser: 'Nhat Quang',
                     hasClickedToday: false,
-                    avatar: 'image_143cd6.jpg' // Đường dẫn ảnh đại diện của Linh Nhu
+                    gender: 'female',
+                    username: 'Linh Nhu' // Tên gốc của tài khoản
                 }
             };
         }
@@ -382,8 +818,24 @@
             localStorage.setItem('loveChainUsers', JSON.stringify(dataToSave));
         }
 
+        // Hàm lưu thông báo chờ vào localStorage
+        function savePendingNotification(targetUsernameKey, message) {
+            const key = `pendingNotification_${targetUsernameKey}`;
+            localStorage.setItem(key, message);
+        }
+
+        // Hàm lấy và xóa thông báo chờ
+        function getAndClearPendingNotification(targetUsernameKey) {
+            const key = `pendingNotification_${targetUsernameKey}`;
+            const message = localStorage.getItem(key);
+            if (message) {
+                localStorage.removeItem(key); // Xóa ngay sau khi đọc
+            }
+            return message;
+        }
+
         let users = loadUsersData(); // Tải dữ liệu khi khởi động
-        let currentUser = null; // Lưu trữ người dùng đang đăng nhập
+        let currentUser = null; // Lưu trữ người dùng đang đăng nhập (tên khóa, ví dụ 'Nhat Quang')
 
         // Biến để lưu trữ chuỗi "thật" khi bật chế độ test
         let realLoveChainData = null;
@@ -397,29 +849,22 @@
             return `${year}-${month}-${day}`;
         }
 
-        // Hàm cập nhật hiển thị avatar và tên
-        function updateAvatarsAndNames() {
+        // Hàm cập nhật hiển thị tên
+        function updateNames() {
             if (currentUser && users[currentUser]) {
                 const user = users[currentUser];
-                const connectedUser = users[user.connectedUser];
-
-                currentUserAvatar.src = user.avatar;
-                currentUserName.textContent = user.username || currentUser; // Dùng username nếu có, không thì dùng currentUser
-                
-                if (connectedUser) {
-                    connectedUserAvatar.src = connectedUser.avatar;
-                    connectedUserName.textContent = connectedUser.username || connectedUser.connectedUser;
+                currentUserName.textContent = user.username; // Hiển thị tên đã sửa đổi
+                if (user.connectedUser && users[user.connectedUser]) {
+                    connectedUserName.textContent = users[user.connectedUser].username; // Hiển thị tên đã sửa đổi của người kia
                 } else {
-                    connectedUserAvatar.src = ''; // Clear avatar if connected user not found
-                    connectedUserName.textContent = 'Người yêu';
+                    connectedUserName.textContent = 'Người yêu'; // Fallback nếu không có người kết nối
                 }
             }
         }
 
-
         // Hàm đăng nhập trực tiếp khi nhấn nút
-        function loginUser(username) {
-            currentUser = username;
+        function loginUser(usernameKey) { // Giờ nhận vào key (Nhat Quang/Linh Nhu)
+            currentUser = usernameKey;
             localStorage.setItem('lastLoggedInUser', currentUser); // Lưu người dùng cuối cùng đăng nhập
 
             // Luôn tải dữ liệu mới nhất từ localStorage khi đăng nhập
@@ -431,258 +876,458 @@
             user.hasClickedToday = isDebugMode ? false : (user.lastClickedDate === getTodayDate());
             saveUsersData(); // Lưu lại ngay để đảm bảo trạng thái đã cập nhật
 
-            loginMessage.textContent = `Đăng nhập thành công! Chào mừng ${currentUser}!`;
-            loginMessage.classList.add('success');
-            loginMessage.classList.remove('error');
+            loginMessage.textContent = `Đăng nhập thành công! Chào mừng ${user.username}!`; // Hiển thị tên đã sửa đổi
+            loginMessage.className = 'message success';
             loginMessage.style.display = 'block';
 
             setTimeout(() => {
                 loginContainer.classList.add('hidden');
-                setTimeout(() => {
-                    loginContainer.style.display = 'none';
-                    dashboardContainer.style.display = 'flex';
-                    setTimeout(() => {
-                        dashboardContainer.style.opacity = '1';
-                        dashboardContainer.style.transform = 'scale(1)';
-                    }, 60);
-                }, 600);
+                dashboardContainer.style.opacity = '1';
+                dashboardContainer.style.transform = 'scale(1)';
+                document.body.classList.add('dashboard-active'); // Thêm class để ẩn "Kết nối tình yêu"
 
-                // Cập nhật số chuỗi hiển thị
-                loveChainCount.textContent = user.loveChain;
-                updateHeartClickability(); // Cập nhật trạng thái click của trái tim
-                updateAvatarsAndNames(); // Cập nhật avatar và tên
-            }, 1000);
+                updateDashboard();
+                checkAndShowPendingNotification(); // Kích hoạt kiểm tra và hiển thị thông báo chờ
+            }, 800);
         }
 
         // Hàm đăng xuất
         function logoutUser() {
-            if (confirm('Bạn có chắc chắn muốn đăng xuất?')) {
-                currentUser = null;
-                localStorage.removeItem('lastLoggedInUser'); // Xóa trạng thái đăng nhập gần nhất
+            currentUser = null;
+            localStorage.removeItem('lastLoggedInUser');
+            dashboardContainer.style.opacity = '0';
+            dashboardContainer.style.transform = 'scale(0.9)';
+            document.body.classList.remove('dashboard-active'); // Xóa class để hiển thị "Kết nối tình yêu"
+            setTimeout(() => {
+                loginContainer.classList.remove('hidden');
+                loginMessage.style.display = 'none'; // Ẩn thông báo đăng nhập
+                if (adminModal.style.display === 'flex') { // Đóng admin modal nếu đang mở
+                    closeAdminModal();
+                }
+            }, 600);
+        }
 
-                dashboardContainer.classList.add('hidden');
-                setTimeout(() => {
-                    dashboardContainer.style.display = 'none';
-                    loginContainer.style.display = 'flex';
-                    loginMessage.style.display = 'none';
-                    setTimeout(() => {
-                        loginContainer.style.opacity = '1';
-                        loginContainer.style.transform = 'scale(1)';
-                        loginContainer.classList.remove('hidden');
-                    }, 60);
-                }, 600);
+        // Hàm cập nhật Dashboard
+        function updateDashboard() {
+            if (currentUser && users[currentUser]) {
+                const user = users[currentUser];
+                const connectedUser = users[user.connectedUser];
+
+                updateNames(); // Cập nhật tên hiển thị
+                loveChainCount.textContent = user.loveChain;
+
+                // Thay đổi màu trái tim dựa trên trạng thái click
+                const heartElement = heartClickArea.querySelector('.heart');
+                if (user.hasClickedToday) {
+                    heartElement.style.color = '#ccc'; // Màu xám nếu đã click
+                    heartElement.style.animation = 'none'; // Dừng animation
+                } else {
+                    heartElement.style.color = '#e91e63'; // Màu hồng nếu chưa click
+                    heartElement.style.animation = 'pulse 1.8s infinite alternate ease-in-out'; // Chạy animation
+                }
             }
         }
 
-        // --- Logic cho tính năng trái tim và tăng chuỗi ---
-        heartClickArea.addEventListener('click', function() {
-            if (!currentUser) return; // Không làm gì nếu chưa đăng nhập
+        // --- Heart Click Logic ---
+        heartClickArea.addEventListener('click', function(event) {
+            if (!currentUser) return; // Đảm bảo đã đăng nhập
 
-            // Luôn tải lại dữ liệu mới nhất từ localStorage trước khi xử lý click
-            users = loadUsersData();
             const user = users[currentUser];
+            const today = getTodayDate();
 
-            // Kiểm tra hasClickedToday. Bỏ qua nếu đang ở chế độ debug
-            if (!isDebugMode && user.hasClickedToday) {
-                alert('Bạn đã tích chuỗi trong ngày hôm nay rồi! Vui lòng quay lại vào ngày mai.');
-                return;
+            // Nếu đang ở chế độ debug, luôn cho phép click và hiển thị pop-up đặc biệt
+            if (isDebugMode) {
+                user.loveChain++;
+                loveChainCount.textContent = user.loveChain;
+                showLoveNotification(`🎉 Bạn đã click thêm một trái tim (Chế độ Debug)! Chuỗi yêu thương: ${user.loveChain} ngày.`, 'success');
+                saveUsersData(); // Lưu lại ngay cả trong debug
+                return; // Kết thúc hàm nếu đang debug
             }
+            
+            // Logic cho chế độ bình thường
+            if (!user.hasClickedToday) {
+                // Nếu chưa click hôm nay
+                if (user.lastClickedDate === today) {
+                    // Trường hợp này không nên xảy ra nếu logic hasClickedToday đúng, nhưng để an toàn
+                    showLoveNotification('Bạn đã click trái tim hôm nay rồi nhé! Hãy đợi đến ngày mai.', 'error');
+                } else if (user.lastClickedDate === '' || user.lastClickedDate === getPreviousDate(today)) {
+                    // Nếu là ngày đầu tiên click hoặc click vào ngày kế tiếp của chuỗi cũ
+                    user.loveChain++;
+                    showLoveNotification(`💖 Chuỗi yêu thương của bạn đã tăng lên ${user.loveChain} ngày! Cố gắng duy trì nhé!`, 'success');
+                } else {
+                    // Chuỗi bị đứt, reset về 1
+                    user.loveChain = 1;
+                    showLoveNotification('💔 Chuỗi yêu thương của bạn đã bị đứt! Bắt đầu lại từ 1 nhé.', 'error');
+                }
+                user.lastClickedDate = today;
+                user.hasClickedToday = true; // Đánh dấu đã click hôm nay
 
-            // Tạo hiệu ứng trái tim bay lên
-            for (let i = 0; i < 5; i++) {
-                const floatingHeart = document.createElement('div');
-                floatingHeart.textContent = '❤️';
-                floatingHeart.classList.add('floating-heart');
-
-                const startX = Math.random() * 50 - 25;
-                const startY = Math.random() * 50 - 25;
-                const endX = Math.random() * 80 - 40;
-                const endY = -(80 + Math.random() * 40);
-
-                floatingHeart.style.left = `calc(50% + ${startX}px)`;
-                floatingHeart.style.top = `calc(50% + ${startY}px)`;
-                floatingHeart.style.setProperty('--x', endX);
-                floatingHeart.style.setProperty('--y', endY);
-                heartClickArea.appendChild(floatingHeart);
-
-                floatingHeart.addEventListener('animationend', () => {
-                    floatingHeart.remove();
-                });
-            }
-
-            // Ghi nhận người dùng hiện tại đã tích chuỗi hôm nay
-            user.lastClickedDate = getTodayDate();
-            user.hasClickedToday = true;
-
-            // Lưu trạng thái của người dùng hiện tại ngay lập tức vào localStorage
-            saveUsersData();
-
-            // ***************************************************************
-            // Tải lại dữ liệu người dùng MỚI NHẤT từ localStorage một lần nữa
-            // để đảm bảo chúng ta đọc được trạng thái đã tích chuỗi của người kia
-            // nếu họ đã tích chuỗi trên một thiết bị/tab khác và đã lưu.
-            users = loadUsersData();
-            const updatedConnectedUserObj = users[user.connectedUser]; // Lấy lại từ dữ liệu mới được tải
-            // ***************************************************************
-
-
-            // Logic tăng chuỗi: Kiểm tra người kia đã tích chuỗi CHƯA
-            // Trong chế độ debug, chúng ta sẽ bỏ qua điều kiện ngày để cho phép tăng chuỗi ngay lập tức
-            if (isDebugMode || (updatedConnectedUserObj && updatedConnectedUserObj.lastClickedDate === getTodayDate())) {
-                // Cả hai đã tích trong ngày hôm nay (hoặc đang ở chế độ debug) -> tăng chuỗi chung
-                user.loveChain++; // Tăng chuỗi cho người dùng hiện tại
-                updatedConnectedUserObj.loveChain = user.loveChain; // Đảm bảo người kia cũng có cùng giá trị chuỗi
-
-                // Cập nhật cả trạng thái hasClickedToday của người kia (nếu người kia đã tích)
-                // Điều này giúp đồng bộ hóa trạng thái hasClickedToday trong bộ nhớ
-                updatedConnectedUserObj.hasClickedToday = true;
-
-                // LƯU LẠI TOÀN BỘ DỮ LIỆU ĐÃ CẬP NHẬT CHO CẢ HAI NGƯỜI DÙNG VÀO LOCALSTORAGE
-                saveUsersData();
-
-                loveChainCount.textContent = user.loveChain; // Cập nhật hiển thị
-                alert(`Tuyệt vời! Cả bạn và ${user.connectedUser} đều đã tích chuỗi hôm nay! Chuỗi yêu thương tăng lên ${user.loveChain} ngày!`);
+                // Tăng chuỗi của người được kết nối
+                const connectedUserKey = user.connectedUser;
+                if (connectedUserKey && users[connectedUserKey]) {
+                    const connectedUser = users[connectedUserKey];
+                    // Nếu người kết nối chưa click hôm nay và không phải là ngày reset chuỗi
+                    if (!connectedUser.hasClickedToday) {
+                        connectedUser.loveChain++;
+                        connectedUser.lastClickedDate = today;
+                        connectedUser.hasClickedToday = true;
+                        // Không cần thông báo cho người kia ngay, họ sẽ thấy khi đăng nhập
+                    } else if (connectedUser.lastClickedDate !== today && connectedUser.lastClickedDate !== getPreviousDate(today)) {
+                         // Nếu người kia đã click nhưng không phải hôm nay và chuỗi bị đứt (chỉ người này click)
+                        connectedUser.loveChain = 1;
+                        connectedUser.lastClickedDate = today;
+                        connectedUser.hasClickedToday = true;
+                    }
+                }
+                saveUsersData(); // Lưu dữ liệu sau khi cập nhật
+                updateDashboard(); // Cập nhật giao diện
+                createFloatingHeart(event); // Tạo hiệu ứng trái tim bay lên
             } else {
-                alert(`Bạn đã tích chuỗi thành công hôm nay! Chờ ${user.connectedUser} tích chuỗi để chuỗi tăng lên nhé!`);
+                // Nếu đã click hôm nay
+                showLoveNotification('Bạn đã click trái tim hôm nay rồi nhé! Hãy đợi đến ngày mai.', 'error');
             }
-
-            updateHeartClickability(); // Cập nhật trạng thái click của trái tim
         });
 
-        // Hàm cập nhật trạng thái click của trái tim
-        function updateHeartClickability() {
-            const heart = heartClickArea.querySelector('.heart');
-            // Trong chế độ debug, luôn cho phép click
-            if (!isDebugMode && currentUser && users[currentUser].hasClickedToday) {
-                heart.style.cursor = 'not-allowed';
-                heart.style.opacity = '0.7'; // Làm mờ để thể hiện không click được
-                heart.style.animation = 'none'; // Ngừng hiệu ứng pulse
-                heart.title = 'Bạn đã tích chuỗi hôm nay rồi!';
-            } else {
-                heart.style.cursor = 'pointer';
-                heart.style.opacity = '1';
-                heart.style.animation = 'pulse 1.8s infinite alternate ease-in-out';
-                heart.title = 'Nhấn để tích chuỗi hôm nay!';
-            }
+        // Hàm lấy ngày trước đó (dùng để kiểm tra chuỗi liên tục)
+        function getPreviousDate(dateString) {
+            const date = new Date(dateString);
+            date.setDate(date.getDate() - 1);
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
         }
 
-        // --- Logic cho thông báo "Nhớ bạn" ---
+        // Tạo hiệu ứng trái tim bay lên
+        function createFloatingHeart(event) {
+            const heart = document.createElement('span');
+            heart.classList.add('floating-heart');
+            heart.textContent = '❤️';
+            document.body.appendChild(heart);
+
+            const rect = heartClickArea.getBoundingClientRect();
+            const x = event.clientX - rect.left - (heart.offsetWidth / 2);
+            const y = event.clientY - rect.top - (heart.offsetHeight / 2);
+
+            heart.style.left = `${rect.left + rect.width / 2}px`;
+            heart.style.top = `${rect.top + rect.height / 2}px`;
+
+            // Randomize target position for floating hearts
+            const targetX = (Math.random() - 0.5) * 100; // -50 to 50
+            const targetY = -(50 + Math.random() * 100); // -50 to -150
+
+            heart.style.setProperty('--x', targetX);
+            heart.style.setProperty('--y', targetY);
+
+            heart.addEventListener('animationend', () => {
+                heart.remove();
+            });
+        }
+
+
+        // --- Love Notification Modal (Hiển thị thông báo chung) ---
+        function showLoveNotification(message, type) {
+            loveNotificationMessage.textContent = message;
+            loveNotificationMessage.className = `love-message-content ${type}`; // Apply success/error class
+            loveNotificationModal.style.display = 'flex';
+        }
+
+        function closeLoveNotificationModal() {
+            loveNotificationModal.style.display = 'none';
+        }
+
+        // --- Heartfelt Notification Modal (Thông báo Nhớ bạn) ---
+        function showHeartfeltNotification(message) {
+            // This function is for the *separate* "Nhớ bạn" button notification
+            // It uses the same modal ID, but we can differentiate messages
+            const notificationMessageElement = heartfeltNotification.querySelector('.love-message-content');
+            notificationMessageElement.innerHTML = message; // Use innerHTML to allow for links
+            heartfeltNotification.style.display = 'flex';
+        }
+
+        function closeHeartfeltNotification() {
+            heartfeltNotification.style.display = 'none';
+        }
+
+        // Hàm gửi thông báo "Nhớ bạn" đến tài khoản kia
         function sendRememberNotification() {
             if (!currentUser) {
-                alert('Vui lòng đăng nhập trước.');
+                showLoveNotification('Bạn cần đăng nhập để gửi lời nhắc!', 'error');
                 return;
             }
 
-            const user = users[currentUser];
-            const targetUsername = user.connectedUser;
+            const sender = users[currentUser].username;
+            const receiverKey = users[currentUser].connectedUser;
+            const receiver = users[receiverKey].username;
 
-            // Yêu cầu quyền gửi thông báo (nếu chưa có)
-            if (Notification.permission === 'default') {
-                Notification.requestPermission().then(permission => {
-                    if (permission === 'granted') {
-                        triggerRememberNotification(targetUsername);
-                    } else {
-                        alert('Bạn cần cấp quyền thông báo cho trình duyệt để gửi tin nhắn này.');
-                    }
-                });
-            } else if (Notification.permission === 'granted') {
-                triggerRememberNotification(targetUsername);
-            } else {
-                alert('Thông báo đã bị chặn. Vui lòng kiểm tra cài đặt trình duyệt của bạn để cho phép thông báo.');
-            }
-        }
-
-        function triggerRememberNotification(targetUsername) {
-            const title = `Tình Yêu Chuỗi: ${currentUser} Nhớ Bạn!`;
-            const options = {
-                body: `${currentUser} rất nhớ bạn và muốn cùng bạn giữ chuỗi yêu thương!`,
-                icon: 'https://cdn-icons-png.flaticon.com/512/876/876008.png' // Icon trái tim
-            };
-
-            const notification = new Notification(title, options);
-
-            notification.onclick = function() {
-                console.log('Thông báo đã được click.');
-            };
-
-            alert(`Tin nhắn "Nhớ bạn" đã được gửi đến ${targetUsername}!`);
-        }
-
-        // --- Logic cho chế độ Debug/Test ---
-        function toggleDebugMode() {
-            users = loadUsersData(); // Đảm bảo users là dữ liệu mới nhất
-
-            if (!isDebugMode) {
-                // Đang tắt -> bật chế độ TEST
-                // Lưu lại dữ liệu chuỗi hiện tại trước khi vào chế độ test
-                realLoveChainData = JSON.parse(JSON.stringify(users)); // Tạo bản sao sâu
-                localStorage.setItem('realLoveChainData', JSON.stringify(realLoveChainData));
-                
-                isDebugMode = true;
-                localStorage.setItem('isDebugMode', isDebugMode);
-                debugToggleButton.classList.add('active');
-                alert('Đã bật chế độ TEST. Chuỗi có thể tăng liên tục trong cùng ngày.');
-            } else {
-                // Đang bật -> tắt chế độ TEST
-                isDebugMode = false;
-                localStorage.setItem('isDebugMode', isDebugMode);
-                debugToggleButton.classList.remove('active');
-
-                // Khôi phục dữ liệu chuỗi "thật"
-                const storedRealData = localStorage.getItem('realLoveChainData');
-                if (storedRealData) {
-                    users = JSON.parse(storedRealData);
-                    saveUsersData(); // Lưu lại dữ liệu thật vào localStorage
-                    alert('Đã tắt chế độ TEST. Chuỗi yêu thương đã được khôi phục về giá trị ban đầu.');
-                } else {
-                    alert('Đã tắt chế độ TEST. Không tìm thấy dữ liệu chuỗi ban đầu để khôi phục.');
-                }
-                
-                // Xóa dữ liệu chuỗi thật đã lưu trong session này
-                localStorage.removeItem('realLoveChainData');
+            if (!receiverKey || !users[receiverKey]) {
+                showLoveNotification('Không tìm thấy người được kết nối để gửi lời nhắc.', 'error');
+                return;
             }
 
-            // Cập nhật hiển thị và trạng thái trái tim nếu đang ở dashboard
+            const message = `👋 ${sender} vừa gửi lời nhắn nhớ bạn! Ghé thăm để cùng giữ chuỗi yêu thương nhé! 💖`;
+            savePendingNotification(receiverKey, message);
+            
+            showLoveNotification(`Đã gửi lời nhắn nhớ đến ${receiver}!`, 'success');
+        }
+
+        // Hàm kiểm tra và hiển thị thông báo chờ khi người dùng đăng nhập
+        function checkAndShowPendingNotification() {
             if (currentUser) {
-                loveChainCount.textContent = users[currentUser].loveChain;
-                updateHeartClickability();
-                updateAvatarsAndNames(); // Cập nhật lại avatar và tên sau khi thay đổi chế độ
-            } else {
-                // Nếu không có người dùng nào đang đăng nhập, tải lại màn hình đăng nhập
-                // để đảm bảo mọi thứ được reset đúng cách
-                window.location.reload(); 
+                const message = getAndClearPendingNotification(currentUser);
+                if (message) {
+                    // Display the message using your loveNotificationModal
+                    showLoveNotification(message, 'info'); // Using 'info' for a neutral style if you add one, or 'success'
+                }
             }
         }
 
-        // Khởi tạo trạng thái nút debug khi tải trang
-        function initDebugButton() {
+
+        // --- Admin Modal Logic ---
+        function openAdminModal() {
+            adminModal.style.display = 'flex';
+            if (isAdminLoggedIn) {
+                adminPasswordSection.style.display = 'none';
+                adminControlsSection.style.display = 'flex';
+                adminModal.querySelector('h2').textContent = 'Admin Controls';
+                populateUserSelect();
+                displaySelectedUserInfo(); // Display info for the first user
+                // Load background colors if saved
+                const customBg1 = localStorage.getItem('customBgColor1');
+                const customBg2 = localStorage.getItem('customBgColor2');
+                if (customBg1) backgroundColorPicker.value = customBg1;
+                if (customBg2) backgroundColorPicker2.value = customBg2;
+            } else {
+                adminPasswordSection.style.display = 'block';
+                adminControlsSection.style.display = 'none';
+                adminModal.querySelector('h2').textContent = 'Admin Access';
+                adminPasswordInput.value = '';
+                adminPasswordMessage.style.display = 'none';
+            }
+        }
+
+        function closeAdminModal() {
+            adminModal.style.display = 'none';
+        }
+
+        function checkAdminPassword() {
+            if (adminPasswordInput.value === ADMIN_PASSWORD) {
+                isAdminLoggedIn = true;
+                adminPasswordMessage.textContent = 'Đăng nhập Admin thành công!';
+                adminPasswordMessage.className = 'modal-message success';
+                adminPasswordMessage.style.display = 'block';
+                setTimeout(() => {
+                    adminPasswordSection.style.display = 'none';
+                    adminControlsSection.style.display = 'flex';
+                    adminModal.querySelector('h2').textContent = 'Admin Controls';
+                    populateUserSelect();
+                    displaySelectedUserInfo();
+                    // Load background colors if saved
+                    const customBg1 = localStorage.getItem('customBgColor1');
+                    const customBg2 = localStorage.getItem('customBgColor2');
+                    if (customBg1) backgroundColorPicker.value = customBg1;
+                    if (customBg2) backgroundColorPicker2.value = customBg2;
+                }, 1000);
+            } else {
+                adminPasswordMessage.textContent = 'Mật khẩu sai. Vui lòng thử lại.';
+                adminPasswordMessage.className = 'modal-message error';
+                adminPasswordMessage.style.display = 'block';
+            }
+        }
+
+        function populateUserSelect() {
+            selectUserToEdit.innerHTML = ''; // Clear previous options
+            for (const userKey in users) {
+                const option = document.createElement('option');
+                option.value = userKey;
+                option.textContent = users[userKey].username; // Display current username
+                selectUserToEdit.appendChild(option);
+            }
+        }
+
+        function displaySelectedUserInfo() {
+            const selectedUserKey = selectUserToEdit.value;
+            if (selectedUserKey && users[selectedUserKey]) {
+                const user = users[selectedUserKey];
+                newLoveChainValueInput.value = user.loveChain;
+                editUserNameInput.value = user.username; // Show current username
+                editUserGenderSelect.value = user.gender; // Show current gender
+            }
+        }
+
+        function setLoveChain() {
+            const selectedUserKey = selectUserToEdit.value;
+            const newValue = parseInt(newLoveChainValueInput.value);
+            if (selectedUserKey && users[selectedUserKey] && !isNaN(newValue) && newValue >= 1) {
+                users[selectedUserKey].loveChain = newValue;
+                users[selectedUserKey].lastClickedDate = getTodayDate(); // Assume it was clicked today for continuity
+                users[selectedUserKey].hasClickedToday = true; // Mark as clicked
+                saveUsersData();
+                updateDashboard();
+                showAdminMessage('Cập nhật chuỗi yêu thương thành công!', 'success');
+            } else {
+                showAdminMessage('Giá trị chuỗi không hợp lệ.', 'error');
+            }
+        }
+
+        function increaseLoveChain() {
+            const selectedUserKey = selectUserToEdit.value;
+            if (selectedUserKey && users[selectedUserKey]) {
+                users[selectedUserKey].loveChain++;
+                newLoveChainValueInput.value = users[selectedUserKey].loveChain; // Update input
+                users[selectedUserKey].lastClickedDate = getTodayDate();
+                users[selectedUserKey].hasClickedToday = true;
+                saveUsersData();
+                updateDashboard();
+                showAdminMessage('Tăng chuỗi yêu thương thành công!', 'success');
+            }
+        }
+
+        function decreaseLoveChain() {
+            const selectedUserKey = selectUserToEdit.value;
+            if (selectedUserKey && users[selectedUserKey] && users[selectedUserKey].loveChain > 1) {
+                users[selectedUserKey].loveChain--;
+                newLoveChainValueInput.value = users[selectedUserKey].loveChain; // Update input
+                users[selectedUserKey].lastClickedDate = getTodayDate();
+                users[selectedUserKey].hasClickedToday = true;
+                saveUsersData();
+                updateDashboard();
+                showAdminMessage('Giảm chuỗi yêu thương thành công!', 'success');
+            } else {
+                showAdminMessage('Không thể giảm chuỗi dưới 1.', 'error');
+            }
+        }
+
+        function resetLoveChainForUser() {
+            const selectedUserKey = selectUserToEdit.value;
+            if (selectedUserKey && users[selectedUserKey]) {
+                users[selectedUserKey].loveChain = 1;
+                newLoveChainValueInput.value = 1; // Update input
+                users[selectedUserKey].lastClickedDate = ''; // Reset last clicked date
+                users[selectedUserKey].hasClickedToday = false;
+                saveUsersData();
+                updateDashboard();
+                showAdminMessage('Reset chuỗi yêu thương thành công!', 'success');
+            }
+        }
+
+        function editUserName() {
+            const selectedUserKey = selectUserToEdit.value;
+            const newName = editUserNameInput.value.trim();
+            if (selectedUserKey && users[selectedUserKey] && newName !== '') {
+                users[selectedUserKey].username = newName;
+                saveUsersData();
+                populateUserSelect(); // Re-populate dropdown to show new name
+                updateNames(); // Update names on dashboard
+                showAdminMessage('Cập nhật tên tài khoản thành công!', 'success');
+            } else {
+                showAdminMessage('Tên không được để trống.', 'error');
+            }
+        }
+
+        function editUserGender() {
+            const selectedUserKey = selectUserToEdit.value;
+            const newGender = editUserGenderSelect.value;
+            if (selectedUserKey && users[selectedUserKey]) {
+                users[selectedUserKey].gender = newGender;
+                saveUsersData();
+                showAdminMessage('Cập nhật giới tính thành công!', 'success');
+            }
+        }
+
+        function showAdminMessage(message, type) {
+            adminActionMessage.textContent = message;
+            adminActionMessage.className = `modal-message ${type}`;
+            adminActionMessage.style.display = 'block';
+            setTimeout(() => {
+                adminActionMessage.style.display = 'none';
+            }, 3000);
+        }
+
+        // --- Debug Mode Logic ---
+        function toggleDebugMode() {
+            isDebugMode = !isDebugMode;
+            localStorage.setItem('isDebugMode', isDebugMode); // Lưu trạng thái
+            debugToggleButton.classList.toggle('active', isDebugMode);
+            debugToggleButton.querySelector('.debug-button-text').textContent = isDebugMode ? 'ĐANG BẬT' : 'Test';
             if (isDebugMode) {
-                debugToggleButton.classList.add('active');
+                // Khi bật debug, lưu lại dữ liệu "thật" và reset hasClickedToday
+                realLoveChainData = JSON.parse(JSON.stringify(users)); // Deep copy
+                for (const userKey in users) {
+                    users[userKey].hasClickedToday = false; // Luôn cho phép click
+                }
+                saveUsersData(); // Lưu trạng thái debug vào localStorage
+                updateDashboard(); // Cập nhật giao diện
+                showLoveNotification('Chế độ Debug đã BẬT. Giờ bạn có thể click tim nhiều lần!', 'info');
             } else {
-                debugToggleButton.classList.remove('active');
+                // Khi tắt debug, khôi phục dữ liệu "thật" và cập nhật hasClickedToday
+                if (realLoveChainData) {
+                    users = realLoveChainData;
+                    // Cần cập nhật lại hasClickedToday dựa trên ngày hiện tại
+                    for (const userKey in users) {
+                         users[userKey].hasClickedToday = (users[userKey].lastClickedDate === getTodayDate());
+                    }
+                    saveUsersData(); // Lưu dữ liệu "thật" trở lại
+                } else {
+                    // Nếu không có realLoveChainData (ví dụ, bật debug ngay từ đầu),
+                    // chỉ cần cập nhật hasClickedToday theo ngày hiện tại
+                    for (const userKey in users) {
+                        users[userKey].hasClickedToday = (users[userKey].lastClickedDate === getTodayDate());
+                    }
+                    saveUsersData();
+                }
+                updateDashboard(); // Cập nhật giao diện
+                showLoveNotification('Chế độ Debug đã TẮT.', 'success');
             }
         }
 
+        // --- Custom Background Color Logic ---
+        function applyBackgroundColors() {
+            const color1 = backgroundColorPicker.value;
+            const color2 = backgroundColorPicker2.value;
 
-        // Đảm bảo hiển thị màn hình đăng nhập ban đầu và xử lý auto-login
-        window.onload = function() {
-            loginContainer.style.display = 'flex';
-            dashboardContainer.style.display = 'none';
+            document.body.style.background = `linear-gradient(135deg, ${color1} 0%, ${color2} 100%)`;
+            
+            localStorage.setItem('customBgColor1', color1);
+            localStorage.setItem('customBgColor2', color2);
 
-            initDebugButton(); // Khởi tạo nút debug
+            themeMessage.textContent = 'Màu nền đã được áp dụng và lưu!';
+            themeMessage.className = 'modal-message success';
+            themeMessage.style.display = 'block';
+            setTimeout(() => {
+                themeMessage.style.display = 'none';
+            }, 3000);
+        }
 
-            // Thử tải dữ liệu người dùng khi trang tải xong để cập nhật hiển thị ngay
-            // và kiểm tra nếu có người dùng đã đăng nhập từ phiên trước đó
-            const lastLoggedInUser = localStorage.getItem('lastLoggedInUser');
-            if (lastLoggedInUser && users[lastLoggedInUser]) { // Kiểm tra user có tồn tại trong data không
-                currentUser = lastLoggedInUser;
-                // users = loadUsersData(); // Đã load ở đầu script
-                loginUser(currentUser); // Tự động đăng nhập lại
+        // Initialize background color on page load
+        function initializeBackgroundColor() {
+            const customBg1 = localStorage.getItem('customBgColor1');
+            const customBg2 = localStorage.getItem('customBgColor2');
+            if (customBg1 && customBg2) {
+                document.body.style.background = `linear-gradient(135deg, ${customBg1} 0%, ${customBg2} 100%)`;
             } else {
-                loginContainer.style.display = 'flex';
-                dashboardContainer.style.display = 'none';
+                // Apply default gradient if no custom colors are saved
+                document.body.style.background = 'linear-gradient(135deg, #fce4ec 0%, #ffcdd2 100%)';
             }
         }
+
+        // Hàm tiện ích chuyển đổi RGB sang Hex (không sử dụng trực tiếp nhưng có thể hữu ích)
+        function rgbToHex(r, g, b) {
+            return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+        }
+
+
+        // Chạy khi DOM đã load
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeBackgroundColor(); // Set background color first
+            const lastUser = localStorage.getItem('lastLoggedInUser');
+            if (lastUser && users[lastUser]) {
+                loginUser(lastUser); // Tự động đăng nhập lại người dùng cuối cùng
+            }
+            // Khởi tạo trạng thái nút debug
+            toggleDebugMode(); // Gọi một lần để cập nhật trạng thái hiển thị của nút
+            toggleDebugMode(); // Gọi lần nữa để đưa nó về trạng thái chính xác (do toggle)
+        });
 
     </script>
 </body>
